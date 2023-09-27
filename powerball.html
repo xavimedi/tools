@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Powerball Generator</title>
+</head>
+<body>
+
+<button onclick="generateLotteryNumbers()" id="lottery">Generate</button>
+<label for="lottery">Generate Powerball Numbers</label>
+
+<div id="results"></div>
+
+<script>
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function generateLotteryNumbers() {
+        const resultsDiv = document.getElementById("results");
+        resultsDiv.innerHTML = "";
+
+        for (let i = 0; i < 5; i++) {
+            const randomNumber = getRandomNumber(1, 69);
+            const whiteBallNumber = document.createElement("h1");
+            whiteBallNumber.textContent = "White Ball Number: " + randomNumber;
+            resultsDiv.appendChild(whiteBallNumber);
+        }
+
+        const powerBallNumber = getRandomNumber(1, 26);
+        const powerBallElement = document.createElement("h1");
+
+        powerBallElement.textContent = "Power Ball Number: " + powerBallNumber;
+
+        resultsDiv.appendChild(powerBallElement);
+    }
+</script>
+</body>
+</html>
